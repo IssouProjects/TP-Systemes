@@ -8,7 +8,7 @@ int div(int dividend, int divisor)
     int result = 0;
     int remainder = dividend;
 
-    while(remainder >= dividend)
+    while(remainder >= divisor)
     {
         result++;
         remainder -= divisor;
@@ -26,6 +26,14 @@ int compute_volume(int rad)
 
 int kmain(void)
 {
+	int user_mode = 1073742288;
+	__asm("mov r2, %0" : "=r"(user_mode): :"r2");
+	__asm("msr CPSR, r2");
+
+	int svc_mode = 1073742291;
+	__asm("mov r2, %0" : "=r"(svc_mode): :"r2");
+	__asm("msr CPSR, r2");
+
     int radius = 5;
     int volume;
 
