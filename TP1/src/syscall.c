@@ -7,8 +7,15 @@ void sys_reboot() {
 	__asm("SWI #0");
 }
 
+void sys_nop() {
+	
+}
+
 void do_sys_reboot() {
 	__asm("B 0x8000");
+}
+
+void do_sys_nop() {
 }
 
 void swi_handler() {	
@@ -18,6 +25,9 @@ void swi_handler() {
 	
 	if(value == 1) {
 		do_sys_reboot();
+	}
+	else if(value == 2) {
+		do_sys_nop();
 	}
 	else {
 		PANIC();

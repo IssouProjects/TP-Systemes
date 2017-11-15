@@ -30,7 +30,8 @@ int kmain(void)
 {
 	__asm("cps 0x10");
 	
-	sys_reboot();
+	//sys_reboot();
+	sys_nop();
 	
 	int user_mode = 1073742288;
 	__asm("mov r2, %0" : "=r"(user_mode): :"r2");
