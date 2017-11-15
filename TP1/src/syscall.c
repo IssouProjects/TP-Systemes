@@ -1,4 +1,5 @@
-#define PANIC() do {kernel_panic(__FILE__, __LINE__);} while(0)
+#include "syscall.h"
+#define PANIC() do {kernel_panic("syscall", 28);} while(0)
 
 void sys_reboot() {
 	int command = 1;
