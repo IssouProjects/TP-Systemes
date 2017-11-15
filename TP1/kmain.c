@@ -28,11 +28,9 @@ int compute_volume(int rad)
 
 int kmain(void)
 {
-	__asm("cps 0x10");
+	__asm ("cps 0x10") ; // switch CPU to USER mode
 	
-	while(1 == 1) {
-		sys_nop();
-	}
+	sys_settime(500);
 	
 	sys_reboot();
 
