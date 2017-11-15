@@ -1,3 +1,5 @@
+#define PANIC() do {kernel_panic(__FILE__, __LINE__);} while(0)
+
 void sys_reboot() {
 	int command = 1;
 	__asm("mov r0, %0" : "=r"(command): :"r0");
@@ -15,6 +17,9 @@ void swi_handler() {
 	
 	if(value == 1) {
 		do_sys_reboot();
+	}
+	else {
+		PANIC();
 	}
 	
 }
