@@ -8,7 +8,9 @@ void sys_reboot() {
 }
 
 void sys_nop() {
-	
+	int command = 2;
+	__asm("mov r0, %0" : "=r"(command): :"r0");
+	__asm("SWI #0");
 }
 
 void do_sys_reboot() {
@@ -18,7 +20,9 @@ void do_sys_reboot() {
 void do_sys_nop() {
 }
 
-void swi_handler() {	
+__attribute__ ((naked)) void swi_handler() {	
+	__asm("stmfd sp!, {r1-r12, lr}");
+	
 	int value = 0;
 	
 	__asm("mov %0, r0" : "=r"(value));
@@ -32,5 +36,5 @@ void swi_handler() {
 	else {
 		PANIC();
 	}
-	
+	__asm("ldmfd sp!, {r1-r12, pc}^");
 }

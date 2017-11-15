@@ -30,22 +30,11 @@ int kmain(void)
 {
 	__asm("cps 0x10");
 	
-	//sys_reboot();
-	sys_nop();
+	while(1 == 1) {
+		sys_nop();
+	}
 	
-	int user_mode = 1073742288;
-	__asm("mov r2, %0" : "=r"(user_mode): :"r2");
-	__asm("msr CPSR, r2");
+	sys_reboot();
 
-	int svc_mode = 1073742291;
-	__asm("mov r2, %0" : "=r"(svc_mode): :"r2");
-	__asm("msr CPSR, r2");
-
-    int radius = 5;
-    int volume;
-
-    dummy();
-    volume = compute_volume(radius);
-
-    return volume;
+    return 0;
 }
