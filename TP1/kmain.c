@@ -1,3 +1,5 @@
+#include "syscall.h"
+
 void dummy()
 {
     return;
@@ -26,19 +28,11 @@ int compute_volume(int rad)
 
 int kmain(void)
 {
-	int user_mode = 1073742288;
-	__asm("mov r2, %0" : "=r"(user_mode): :"r2");
-	__asm("msr CPSR, r2");
-
-	int svc_mode = 1073742291;
-	__asm("mov r2, %0" : "=r"(svc_mode): :"r2");
-	__asm("msr CPSR, r2");
-
-    int radius = 5;
-    int volume;
-
-    dummy();
-    volume = compute_volume(radius);
-
-    return volume;
+	__asm ("cps 0x10") ; // switch CPU to USER mode
+	
+	sys_settime(500);
+	
+	sys_reboot();
+	
+    return 0;
 }
