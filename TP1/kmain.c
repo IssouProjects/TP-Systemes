@@ -28,6 +28,8 @@ int compute_volume(int rad)
 
 int kmain(void)
 {
+	__asm("cps 0x10");
+	
 	sys_reboot();
 	
 	int user_mode = 1073742288;
