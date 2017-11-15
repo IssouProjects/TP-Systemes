@@ -172,3 +172,52 @@ Le programme passe les tests, il rentre dans un état d'interruption, fait un ap
 
 L'objectif des questions suivantes est maintenant de faire un appel système, puis retourner à l'éxuction normale du programme.
 
+## Question 6 
+
+Pas grand chose à dire.
+
+## Question 7
+
+Le problème est que l'état des registres n'est pas sauvergardé notament l'état du registre `lr`,
+ce regisre contient l'adresse de retour après avoir terminé une fonction. 
+
+## Question 8
+
+Pour sauvergarder l'état des registres on utilise:
+```C
+__asm("stmfd sp!, {r1-r12, lr}");
+```
+Les valeurs présentent dans les registres sont alors copiées dans la pile.
+
+Après l'éxecuction des appels systèmes (à la fin de `swi_handler`), on recharge les registres à l'aide de :
+```C
+__asm("ldmfd sp!, {r1-r12, pc}^");
+```
+NB: lr devient pc, en effet afin que le programme retourne à l'état d'avant l'interruption, il faut
+que pc contienne l'adresse de retour.
+
+## Question 9 - 10
+
+I DONT KNOW
+
+## Question 11
+
+En effet tout se passe bien, enfin on pense.
+
+## 
+
+Eh oui Jamy, il y a encore un problème, en effet le stack pointer est incrémenter (ou plutot décrémenter)
+à chaque interruption.
+
+Pour règler ce problème, il faut dire à arm de ne pas toucher au stack pointer.
+On écrit alors:
+```C
+__attribute__ ((naked)) void swi_handler(void){
+	...
+}
+```
+On pourrait aussi résoudre le problème en sauvant le stack pointer dans la pile mais bon ...
+
+## Question 13
+
+Les tests se déroulent comme prévus. Et on est heureux.
