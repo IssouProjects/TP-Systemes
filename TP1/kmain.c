@@ -1,3 +1,5 @@
+#include "syscall.h"
+
 void dummy()
 {
     return;
@@ -26,6 +28,8 @@ int compute_volume(int rad)
 
 int kmain(void)
 {
+	sys_reboot();
+	
 	int user_mode = 1073742288;
 	__asm("mov r2, %0" : "=r"(user_mode): :"r2");
 	__asm("msr CPSR, r2");
