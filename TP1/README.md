@@ -203,8 +203,6 @@ I DONT KNOW
 
 En effet tout se passe bien, enfin on pense.
 
-## 
-
 Eh oui Jamy, il y a encore un problème, en effet le stack pointer est incrémenté (ou plutôt décrémenté)
 à chaque interruption.
 
