@@ -195,9 +195,15 @@ __asm("ldmfd sp!, {r1-r12, pc}^");
 NB: lr devient pc, en effet afin que le programme retourne à l'état d'avant l'interruption, il faut
 que pc contienne l'adresse de retour.
 
-## Question 9 - 10
+## Question 9 
 
-I DONT KNOW
+WHAT IS THAT
+
+## Question 10
+
+Bon on suppose, qu'il n'y a pas besoin de sauver le status register. En effet il sert pour les calculs, or il n'y
+a pas de calcul en cours lors du traitement de l'interruption.
+Et puis de toute façon, on ne peut le sauvergarder, çà ne compile pas (Insert MM catch phrase).
 
 ## Question 11
 
