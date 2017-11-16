@@ -113,7 +113,6 @@ On ne peut pas repasser en SVC car l'utilisateur n'a pas les droits
 
 L'objectif des questions suivantes est d'appeler une fonction system après une interruption software.
 
-
 ## Question 1
 
 ```C
@@ -152,7 +151,7 @@ On récupère la valeur qu'on avait stocké précédement dans le registre r0 à
 __asm("mov %0, r0" : "=r"(param));
 ```
 A l'aide d'un switch autour de param, on appele la fonction voulue.
-Si le param n'est pas géré, on appele une methode `PANIC()` qui panique.
+Si le param n'est pas géré, on appele une méthode `PANIC()` qui panique.
 
 Pour le param 1, on appele `do_sys_reboot()`
 ```C
@@ -170,7 +169,7 @@ Le programme passe les tests, il rentre dans un état d'interruption, fait un ap
 
 -------------------------------------------------------
 
-L'objectif des questions suivantes est maintenant de faire un appel système, puis retourner à l'éxuction normale du programme.
+L'objectif des questions suivantes est maintenant de faire un appel système, puis retourner à l'exécution normale du programme.
 
 ## Question 6 
 
@@ -206,7 +205,7 @@ En effet tout se passe bien, enfin on pense.
 
 ## 
 
-Eh oui Jamy, il y a encore un problème, en effet le stack pointer est incrémenter (ou plutot décrémenter)
+Eh oui Jamy, il y a encore un problème, en effet le stack pointer est incrémenté (ou plutôt décrémenté)
 à chaque interruption.
 
 Pour règler ce problème, il faut dire à arm de ne pas toucher au stack pointer.
