@@ -11,6 +11,7 @@ Probablement des adresses physiques car elles ne doivent pas bouger
 ## Question 4
 
 `SYSTEM RAM` :
+
 |Adresses|Taille|
 |--------|------|
 |`9f7ff - 1000`||
