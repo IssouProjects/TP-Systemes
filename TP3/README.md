@@ -34,12 +34,14 @@ init[4] = {1,2,3,4}; // --> STACK
 ```
 
 ## Question 7
-```
-heap:  	0x231c010
-stack: 	0x34acd680
-main():	0x004005dd
-bss:		0x00601058
-data:		0x00601048
+
+|Element|Adresse|
+|-------|-------|
+|heap|`0x231c010`|
+|stack|`0x34acd680`|
+|main()|`0x004005dd`|
+|bss|`0x00601058`|
+|data|`0x00601048`|
 
 ## Question 8
 
