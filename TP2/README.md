@@ -40,7 +40,7 @@ Page replacement
 
 ## Question 10
 
-4 adresses (pour le niveau 1) - Niveau 2 : 4x4 adresses
+4 adresses (pour le niveau 1) - Niveau 2 : 4 adresses
 
 ## Question 11
 
